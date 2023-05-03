@@ -42,3 +42,10 @@ function butaoD(){
     document.getElementById('description').innerHTML = reviews[i].text
     document.getElementById('img').setAttribute('src', reviews[i].image)
 }
+function butaoE(){
+    i--
+    document.getElementById('name').innerHTML = reviews[i].name
+    document.getElementById('job').innerHTML = reviews[i].job
+    document.getElementById('description').innerHTML = reviews[i].text
+    document.getElementById('img').setAttribute('src', reviews[i].image)
+}
