@@ -94,3 +94,33 @@ const menu = [
     description: "Skateboard fam synth authetic semiotics. Live-edge lyft af,edison buld yuccie cricifix microdosing",
 },
 ];
+
+
+const menuItems = document.querySelector('.menu-itens');
+const buttonContainer = document.querySelector('.button-container');
+
+function displayMenuItems(menuItems){
+  let displayMenu = menu.map((item) => {
+    return
+    `
+    <div class="item-image">
+    <img src="${item.image}" alt="${item.title}" />
+  </div>
+
+  <div class="item-info">
+    <div class="item-title">
+      <p>${item.title}</p>
+      <p class="price">${item.price}</p>
+    </div>
+
+    <div class="item-description">
+      <p>
+        ${item.description}
+      </p>
+    </div>
+  </div>
+  `
+  });
+
+  displayMenu = displayMenu.join("");
+}
