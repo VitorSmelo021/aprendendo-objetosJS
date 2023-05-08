@@ -1,5 +1,4 @@
 const menu = [
-
   {
     id: 1,
     title: "Buttermiilk Pancakes",
@@ -52,55 +51,65 @@ const menu = [
 
   {
     id: 6,
-    title:"Oreo Dream",
+    title: "Oreo Dream",
     category: "Shakes",
     price: 18.99,
     image: "./images/item-6.jpeg",
-    description: "Portland chicharrones ethical edison, palo santo craft beer chia heirloom iphone everyday",
-},
+    description:
+      "Portland chicharrones ethical edison, palo santo craft beer chia heirloom iphone everyday",
+  },
 
-{
+  {
     id: 7,
-    title:"Bacon Overflow",
+    title: "Bacon Overflow",
     category: "Breakfast",
     price: 8.99,
     image: "./images/item-7.jpeg",
-    description: "Carry jianbing normcore freegan. Viral single-origin coffee live-edge, pork belly cloud bread iceland put a bird",
-},
-{
+    description:
+      "Carry jianbing normcore freegan. Viral single-origin coffee live-edge, pork belly cloud bread iceland put a bird",
+  },
+  {
     id: 8,
-    title:"Anerican Classic",
+    title: "Anerican Classic",
     category: "Lunch",
     price: 12.99,
     image: "./images/item-8.jpeg",
-    description: "On it tumblt kickstarter thundercast migas everyday carry squid palo santo leggings. Food truck truffaut",
-},
+    description:
+      "On it tumblt kickstarter thundercast migas everyday carry squid palo santo leggings. Food truck truffaut",
+  },
 
-{
+  {
     id: 9,
-    title:"Quarantine Buddy",
+    title: "Quarantine Buddy",
     category: "Shakes",
     price: 16.99,
     image: "./images/item-9.jpeg",
-    description: "Skateboard fam synth authetic semiotics. Live-edge lyft af,edison buld yuccie cricifix microdosing",
-},
+    description:
+      "Skateboard fam synth authetic semiotics. Live-edge lyft af,edison buld yuccie cricifix microdosing",
+  },
 
-{
+  {
     id: 10,
-    title:"Stack Dinner",
+    title: "Stack Dinner",
     category: "Dinner",
     price: 39.99,
     image: "./images/item-10.jpeg",
-    description: "Skateboard fam synth authetic semiotics. Live-edge lyft af,edison buld yuccie cricifix microdosing",
-},
+    description:
+      "Skateboard fam synth authetic semiotics. Live-edge lyft af,edison buld yuccie cricifix microdosing",
+  },
 ];
 
+const menuItems = document.querySelector(".menu-itens");
+const buttonContainer = document.querySelector(".button-container");
 
-const menuItems = document.querySelector('.menu-itens');
-const buttonContainer = document.querySelector('.button-container');
+window.addEventListener("DOMContentLoaded", () => {
+  displayMenuButtons()
+});
 
- menu.map((item) => {
-    let html =  `
+
+menu.map((item) => {
+  let html = `
+    <div class="content">
     <div class="item-image">
     <img src="${item.image}" alt="${item.title}" />
   </div>
@@ -116,11 +125,27 @@ const buttonContainer = document.querySelector('.button-container');
         ${item.description}
       </p>
     </div>
+   </div>
   </div>
-  `
+  `;
 
-  menuItems.innerHTML += html
+  menuItems.innerHTML += html;
+});
 
+function displayMenuButtons(){
+  const categories = menu.reduce((value, item) => {
+    if(!value.includes(item.category)){
+      value.push(item.category)
+    }
+  
+    return value;
+  }, ["all"]);
 
-  });
+  const categoryButtons = categories.map((category) => {
+    return `
+    <button class="filter-button" data-id="${category}">${category}</button>
+    `
+  }).join("");
 
+  buttonContainer.innerHTML += categoryButtons;
+}
